@@ -1,0 +1,161 @@
+﻿% ============================================================
+%  高中数学题库 LaTeX 模板（MathCyclus格式）
+%  适用于各种考试题库的排版
+%  说明：
+%    - 采用 12pt 字号 + 2.5cm 边距
+%    - 使用 ctexart 支持中文
+%    - 支持选择题、填空题、解答题
+%    - 包含答案和解析
+%    - 符合 MathCyclus 题库管理系统格式
+% ============================================================
+
+\documentclass[12pt, a4paper, oneside]{ctexart}
+
+% ── 1. 数学与链接 ──
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[bookmarks=true, colorlinks, citecolor=blue, linkcolor=black]{hyperref}
+
+% ── 2. 字体方案 ──
+\usepackage{newtxmath}
+
+% ── 3. 页面布局 ──
+\usepackage[a4paper, margin=2.5cm, footskip=1cm]{geometry}
+
+% ── 4. 页眉页脚 ──
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{题库第\thepage 页（共\pageref{LastPage}页）}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ── 5. 表格与插图 ──
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{diagbox}
+\usepackage{makecell}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{tikz}
+
+% ── 6. 选择题选项（tasks 环境） ──
+\usepackage{tasks}
+\settasks{
+    label       = \Alph*.,
+    label-width = 1.8em,
+    item-indent = 2.4em,
+    label-offset = 0.5em,
+    column-sep  = 2em,
+    before-skip = 0pt,
+    after-skip  = 0pt
+}
+
+% ── 7. 大题编号（enumitem 体系） ──
+\usepackage[shortlabels]{enumitem}
+\newlist{examenum}{enumerate}{3}
+\setlist[examenum,1]{label=\arabic*., leftmargin=2em, itemsep=0.3em, parsep=0em}
+\setlist[examenum,2]{label=(\arabic*), leftmargin=1.5em, itemsep=0.1em, parsep=0em}
+\setlist[examenum,3]{label=(\roman*), leftmargin=1.5em, itemsep=0.1em, parsep=0em}
+
+% ── 8. 自定义命令 ──
+
+% 圈号数字
+\newcommand{\mycircled}[1]{%
+  \tikz[baseline=(char.base),outer sep=0pt]{%
+    \node[draw,circle,inner sep=0.5pt,minimum size=1.4em,
+          line width=0.4pt,font=\zihao{-5}] (char) {#1};%
+  }%
+}
+
+% 旋转平行符号
+\newcommand{\Parallel}{\raisebox{0.1ex}{\rotatebox[origin=c]{-20}{$\parallel$}}}
+
+% 下划线填空
+\newcommand{\blank}{\underline{\hspace{2cm}}}
+
+% 答案命令
+\newcommand{\answer}[1]{\textbf{答案：}#1}
+
+% 解析命令
+\newcommand{\analysis}[1]{\textbf{解析：}#1}
+
+% 详解命令
+\newcommand{\explanation}[1]{\textbf{详解：}#1}
+
+% ── 9. 大标题辅助命令 ──
+\newcommand{\subjecttitle}[1]{{\fontsize{24pt}{22pt}\selectfont\centering\textbf{#1}\par}}
+\newcommand{\subtitle}[1]{{\fontsize{16pt}{16pt}\selectfont\centering #1\par}}
+
+% ============================================================
+%  正文开始
+% ============================================================
+\begin{document}
+
+% ── 题库标题区 ──
+\begin{center}
+    \LARGE{\textbf{考试题库}}
+\end{center}
+
+\vspace{0.5em}
+
+% ── 注意事项 ──
+\noindent\textbf{注意事项}：
+
+1．本题库包含选择题、填空题、解答题三种题型。
+
+2．选择题和填空题答案直接标注在题目后，解答题提供详细解析。
+
+3．使用本题库时，请先独立完成题目，再对照答案和解析。
+
+\vspace{1em}
+
+% ══════════════════════════════════════════
+%  选择题部分
+% ══════════════════════════════════════════
+
+\noindent\textbf{选择题：本题共8小题，每小题5分，共40分。在每小题给出的四个选项中，
+只有一项是符合题目要求的。}
+
+\begin{enumerate}[itemsep=0.3em]
+    \item 题目示例
+    \begin{tasks}(4)
+        \task 选项A
+        \task 选项B
+        \task 选项C
+        \task 选项D
+    \end{tasks}
+    \answer{A}
+    \analysis{解析内容}
+\end{enumerate}
+
+% ══════════════════════════════════════════
+%  填空题部分
+% ══════════════════════════════════════════
+
+\noindent\textbf{填空题：本题共3小题，每小题5分，共15分。}
+
+\begin{enumerate}[start=9, itemsep=0.8em]
+    \item 填空题示例 \blank.
+    \answer{答案内容}
+    \analysis{解析内容}
+\end{enumerate}
+
+% ══════════════════════════════════════════
+%  解答题部分
+% ══════════════════════════════════════════
+
+\noindent\textbf{解答题：本题共5小题，共77分。解答应写出文字说明、证明过程或演算步骤。}
+
+\begin{examenum}
+    \item （13分）解答题示例
+    \begin{examenum}
+        \item 第1问
+        \item 第2问
+    \end{examenum}
+    \answer{答案内容}
+    \analysis{解析内容}
+    \explanation{详解内容}
+\end{examenum}
+
+\end{document}

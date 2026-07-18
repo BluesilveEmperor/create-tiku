@@ -1,0 +1,23 @@
+﻿{
+  "skill_name": "create-tiku",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我把2024高考真题.pdf转换成题库",
+      "expected_output": "生成LaTeX题库文件，包含选择题、填空题、解答题，以及答案和解析",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "创建一个考试题库，PDF文件是试卷.pdf",
+      "expected_output": "提取试卷中的题目，生成结构化的LaTeX题库",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "把这个PDF转成LaTeX格式，文件是2024年数学试卷.pdf",
+      "expected_output": "将PDF转换为LaTeX格式，保留题目结构和公式",
+      "files": []
+    }
+  ]
+}
